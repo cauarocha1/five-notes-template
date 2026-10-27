@@ -1,0 +1,14 @@
+node_modules
+dist
+.wrangler
+wrangler.jsonc
+.dev.vars
+.env
+.env.*
+!.env.example
+five-d1-backup.sql
+*.sql
+!migrations/*.sql
+coverage
+playwright-report
+test-results

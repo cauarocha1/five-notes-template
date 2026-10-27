@@ -1,0 +1,48 @@
+{
+  "name": "five-notes",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build --configLoader runner",
+    "preview": "vite preview",
+    "test": "vitest run --config vitest.config.ts --configLoader runner",
+    "test:integration": "node scripts/smoke-sync.mjs",
+    "test:watch": "vitest",
+    "cf:dev": "vite dev --host 0.0.0.0",
+    "cf:deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply FIVE_DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply FIVE_DB --remote"
+  },
+  "dependencies": {
+    "@excalidraw/excalidraw": "0.18.1",
+    "@milkdown/crepe": "^7.17.0",
+    "@milkdown/kit": "^7.17.0",
+    "@milkdown/react": "^7.17.0",
+    "dexie": "^4.2.1",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.13.0",
+    "@cloudflare/workers-types": "^5.20261001.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "fake-indexeddb": "^6.2.4",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.9.2",
+    "vite": "^7.1.7",
+    "vite-plugin-pwa": "^1.0.3",
+    "vitest": "^3.2.4",
+    "workbox-window": "7.4.1",
+    "wrangler": "^4.39.0"
+  }
+}

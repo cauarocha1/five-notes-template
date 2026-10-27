@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prepare local Worker config
+        run: cp wrangler.example.jsonc wrangler.jsonc
+      - uses: pnpm/setup@v3
+        with:
+          version: 11.25.0
+          runtime: node@24
+          cache: true
+          require-lockfile: true
+      - name: Unit tests
+        run: pnpm test
+      - name: Build
+        run: pnpm build

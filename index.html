@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#10100f" />
+    <meta name="description" content="five — suas notas, ideias e estudos conectados." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>five — notas conectadas</title>
+  </head>
+  <body>
+    <div id="root"><main style="min-height:100vh;min-height:100dvh;display:grid;place-content:center;gap:10px;background:#0b0b0d;color:#929298;font:12px system-ui;text-align:center"><strong style="color:#f1f1f3;font-size:18px">five</strong><span>Abrindo suas notas neste aparelho…</span></main></div>
+    <script>
+      window.setTimeout(() => {
+        const root = document.getElementById('root')
+        if (!root || root.dataset.appReady === 'true') return
+        const screen = document.createElement('main')
+        screen.setAttribute('role', 'alert')
+        screen.style.cssText = 'min-height:100vh;min-height:100dvh;display:grid;place-content:center;justify-items:center;gap:12px;padding:calc(24px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));background:#0b0b0d;color:#929298;font:12px system-ui;text-align:center'
+        const brand = document.createElement('strong')
+        brand.textContent = 'five'
+        brand.style.cssText = 'color:#f1f1f3;font-size:18px'
+        const message = document.createElement('span')
+        message.textContent = 'O aplicativo demorou para abrir. Suas notas locais continuam neste aparelho.'
+        const retry = document.createElement('button')
+        retry.type = 'button'
+        retry.textContent = 'Tentar novamente'
+        retry.style.cssText = 'padding:10px 14px;border:1px solid #38383f;border-radius:8px;background:#17171b;color:#f1f1f3;font:inherit'
+        retry.addEventListener('click', () => window.location.reload())
+        screen.append(brand, message, retry)
+        root.replaceChildren(screen)
+      }, 12000)
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
